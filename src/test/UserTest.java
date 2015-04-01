@@ -1,6 +1,5 @@
 package test;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -15,9 +14,9 @@ public class UserTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("conf/applicationContext.xml");
 		UserDao UserDao=(UserDao)ctx.getBean("userDao");
 		
-		/*List<User> users = UserDao.getALlUsers();
+		List<User> users = UserDao.getALlUsers();
 		System.out.print(users);
-		*/
+		
 	/*	
 		User u = new User();
 		u.setPwd("111lll");

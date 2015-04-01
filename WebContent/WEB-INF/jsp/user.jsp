@@ -9,6 +9,21 @@
 <jsp:include page="common/allscript.jsp" />
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#newUserForm").hide();
+	$("#newUserBtn").click(function(){
+		$("#newUserForm").slideToggle();
+	})
+	
+	$("#errorFlag").hide();
+	$("#newUserSubmit").click(function(){
+		if($("#pwd").val != $("#confirm").val){
+			$("#errorFlag").show();
+		}else{
+
+			$("#newUserForm").submit();
+		}
+	})
+	
 	$.ajax({
 	    type : "get",
 		url : "/ms2/user/all",
@@ -19,18 +34,24 @@ $(document).ready(function(){
 				/* for(i in msg){
 					alert(msg[i].uname);
 				} */
-				
+				var userListHtml = "";
 				$.each(msg,function(i,user){
-					alert(i+" "+user.uname);
+					userListHtml += "<tr class='list-users'><td>"+user.uid+"</td>";
+					userListHtml += "<td>"+user.uname+"</td>";
+					userListHtml += "<td>"+user.suFlag+"</td>";
+					userListHtml += "<td>"+user.utime+"</td>";
+					if(user.suFlag){
+						userListHtml += "<td><a class='btn btn-success' herf='/ms2/user/chgType?uid="+user.uid+"&suFlag=0'>cancel admin</a></td>"
+					}else{
+						userListHtml += "<td><a class='btn btn-success' herf='/ms2/user/chgType?uid="+user.uid+"&suFlag=1'>make admin</a></td>"
+						
+					}
+					userListHtml +="</tr>"
 				});
 				
-				
-				//$.cookie("uid", data.uid,{expires:1,path:"/"});
-				//$.cookie("uname", data.uname,{expires:1,path:"/"}); 
-				//location.href = "/ms2/user/all";
+				$('#userList').html(userListHtml);		
 			}else{
-				//$('#errorFlag').show();
-				//alert("error");
+				location.href = "/ms2/user/";
 			}
 		}
 	});
@@ -57,71 +78,72 @@ $(document).ready(function(){
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
-								<th>Role</th>
+								<th>Admin</th>
 								<th>Time</th>
 								<th>More</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="list-users" id="userList">
-								<!-- <td>1</td>
-								<td>Admin</td>
-								<td>Admin</td>
-								<td>Admin</td>
-								<td><span class="label label-success">Active</span></td>
-								<td>
-									<div class="btn-group">
-										<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
-											href="#">Actions <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="#"><i class="icon-user"></i> Details</a></li>
-											<li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-											<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-											<li class="nav-header">Permissions</li>
-											<li><a href="#"><i class="icon-lock"></i> Make <strong>Admin</strong></a></li>
-											<li><a href="#"><i class="icon-lock"></i> Make <strong>Moderator</strong></a></li>
-											<li><a href="#"><i class="icon-lock"></i> Make <strong>User</strong></a></li>
-										</ul>
-									</div>
-								</td> -->
-							</tr>
-						
-							
-						
+						<tbody id="userList">
 						</tbody>
 					</table>
-					<div class="pagination">
-						<ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
-					</div>
-					<a href="new-user.html" class="btn btn-success">New User</a>
+					
+					<a href="#" class="btn btn-success" id="newUserBtn">New User</a>
+					
+					<form id="newUserForm" class="form-horizontal"
+						action="/ms2/user/add" method="post">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="name">User</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="name" name="uname" />
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label" for="name">Pwd</label>
+								<div class="controls">
+									<input type="password" class="input-xlarge" id="pwd"
+										name="pwd" />
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="name">Confirm</label>
+								<div class="controls">
+									<input type="password" class="input-xlarge" id="confirm"
+										name="confirm" />
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="name">Type</label>
+								<div class="controls">
+								   
+									<input type="radio" class="input-xlarge" id="name"
+										name="suFlag" />Admin
+									
+									<input type="radio" class="input-xlarge" id="name"
+										name="suFlag" />Normal
+								</div>
+							</div>
+
+			                
+							<div class="control-group">
+								<label class="control-label" for="name">new</label>
+								<div class="controls">
+								<a class="btn btn-success" id="newUserSubmit">New</a>
+								 <p id="errorFlag">密码不一致</p>
+								</div>
+							</div>
+							
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>
 		<jsp:include page="common/footer.jsp" />
 
 	</div>
-
-
-<!-- 	<script>
-		$(document).ready(function() {
-			$('.dropdown-menu li a').hover(function() {
-				$(this).children('i').addClass('icon-white');
-			}, function() {
-				$(this).children('i').removeClass('icon-white');
-			});
-
-			if ($(window).width() > 760) {
-				$('tr.list-users td div ul').addClass('pull-right');
-			}
-		});
-	</script> -->
 </body>
 </html>
 
