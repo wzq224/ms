@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzq.ms.dao.AuthorityDao">
+
+	
+
+	<select id="getAuValue" resultType="int" parameterType="Authority" >
+		SELECT  
+		au_value as auValue
+		FROM Authority
+		WHERE c_id = #{cid}
+		AND u_id = #{uid}
+	</select>
+	
+	
+	<insert id="addAuVAlue" parameterType="Authority" flushCache="true" >
+		INSERT
+		INTO Authority (u_id,c_id,au_value)
+		VALUES(#{uid},#{cid},#{auValue})
+	</insert>
+	
+	<update id="chgAuVAlue" parameterType="Authority">
+		UPDATE Authority 
+		SET au_value=#{auValue} 
+		WHERE c_id = #{cid}
+		AND u_id = #{uid}
+	</update>
+	
+	
+	<delete id="deleteAuthority" parameterType="int">
+		DELETE FROM Authority 
+		WHERE c_id=#{cid}
+	</delete>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC
+    "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="User" type="com.wzq.ms.dataobject.User" />
+		<typeAlias alias="Category" type="com.wzq.ms.dataobject.Category" />
+		<typeAlias alias="Article" type="com.wzq.ms.dataobject.Article" />
+		<typeAlias alias="Authority" type="com.wzq.ms.dataobject.Authority" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/wzq/ms/dao/mapper/UserMapper.xml" />
+		<mapper resource="com/wzq/ms/dao/mapper/CategoryMapper.xml" />
+		<mapper resource="com/wzq/ms/dao/mapper/ArticleMapper.xml" />
+		<mapper resource="com/wzq/ms/dao/mapper/AuthorityMapper.xml" />
+	</mappers>
+	
+	
+</configuration>

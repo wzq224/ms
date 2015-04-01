@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzq.ms.dao.UserDao">
+
+	
+
+	<select id="getALlUsers" resultType="User">
+		SELECT 
+		u_id as uid,
+		u_name as uname,
+		pwd,
+		su_flag as suFlag,
+		u_time as utime
+		FROM user
+	</select>
+	
+	<select id="checkLogin" parameterType="User" resultType="User">
+		SELECT 
+		u_name as uname,
+		u_id as uid
+		FROM user
+		WHERE u_name=#{uname}
+		AND pwd=#{pwd}
+		LIMIT 1
+	</select>
+	
+	<select id="getUserById" parameterType="int" resultType="User">
+		SELECT 
+		u_id as uid,
+		u_name as uname,
+		pwd,
+		su_flag as suFlag,
+		u_time as utime
+		FROM user
+		WHERE u_id=#{uid}
+	</select>
+	
+	<insert id="addUser" parameterType="User" flushCache="true" >
+		INSERT
+		INTO user (u_name,pwd,su_flag,u_time)
+		VALUES(#{uname},#{pwd},#{suFlag},#{utime})
+	</insert>
+	
+	<update id="chgPwd" parameterType="User">
+		UPDATE user 
+		SET pwd=#{pwd} 
+		WHERE u_id=#{uid}
+	</update>
+	
+	<update id="chgType" parameterType="User">
+		UPDATE user 
+		SET su_flag=#{suFlag} 
+		WHERE u_id=#{uid}
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM user 
+		WHERE u_id=#{uid}
+	</delete>
+</mapper>

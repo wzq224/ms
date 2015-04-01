@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzq.ms.dao.CategoryDao">
+
+	
+
+	<select id="getALlCategories" resultType="Category">
+		SELECT 
+		c_id as cid,
+		u_id as uid,
+		c_name as cname,
+		c_time as ctime
+		FROM Category
+	</select>
+	
+	<select id="getCategoriesByCid" parameterType="int" resultType="Category">
+		SELECT 
+		c_id as cid,
+		u_id as uid,
+		c_name as cname,
+		c_time as ctime
+		FROM Category
+		WHERE c_id=#{cid}
+	</select>
+	
+	<select id="getCategoriesByUid" parameterType="int" resultType="Category">
+		SELECT 
+		c_id as cid,
+		u_id as uid,
+		c_name as cname,
+		c_time as ctime
+		FROM Category
+		WHERE u_id=#{uid}
+	</select>
+	
+	
+	<insert id="addCategory" parameterType="Category" flushCache="true" >
+		INSERT
+		INTO Category (u_id,c_name,c_time)
+		VALUES(#{uid},#{cname},#{ctime})
+	</insert>
+	
+	<update id="chgName" parameterType="Category">
+		UPDATE Category 
+		SET c_name=#{cname} 
+		WHERE c_id=#{cid}
+	</update>
+	
+	
+	<delete id="deleteCategory" parameterType="int">
+		DELETE FROM Category 
+		WHERE c_id=#{cid}
+	</delete>
+</mapper>
