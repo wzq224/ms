@@ -19,7 +19,6 @@ $(document).ready(function(){
 		if($("#pwd").val != $("#confirm").val){
 			$("#errorFlag").show();
 		}else{
-
 			$("#newUserForm").submit();
 		}
 	})
