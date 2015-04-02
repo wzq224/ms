@@ -6,7 +6,7 @@ import com.wzq.ms.dataobject.Category;
 
 public interface CategoryDao {
 
-	public List<Category> getALlCategories();
+	public List<Category> getAllCategories();
 	
 	public Category getCategoriesByCid(int cid);
 	

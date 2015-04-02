@@ -22,7 +22,7 @@ $(document).ready(function(){
 						
 						$.cookie("uid", data.uid,{expires:1,path:"/"});
 						$.cookie("uname", data.uname,{expires:1,path:"/"}); 
-						location.href = "/ms2/user/all";
+						location.href = "/ms2/user/page";
 					}else{
 						$('#errorFlag').show();
 						//alert("error");

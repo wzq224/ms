@@ -17,6 +17,7 @@ public class UserTest {
 		List<User> users = UserDao.getALlUsers();
 		System.out.print(users);
 		
+	
 	/*	
 		User u = new User();
 		u.setPwd("111lll");

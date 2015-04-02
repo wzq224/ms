@@ -7,6 +7,7 @@ public class Category {
 	private int cid;
 	private int uid;
 	private String cname;
+	private String uname;
 	private Date ctime;
 	
 	
@@ -21,6 +22,16 @@ public class Category {
 		this.uid = uid;
 		this.cname = cname;
 		this.ctime = ctime;
+	}
+
+
+	public String getUname() {
+		return uname;
+	}
+
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
 

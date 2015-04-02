@@ -40,9 +40,9 @@ $(document).ready(function(){
 					userListHtml += "<td>"+user.suFlag+"</td>";
 					userListHtml += "<td>"+user.utime+"</td>";
 					if(user.suFlag){
-						userListHtml += "<td><a class='btn btn-success' herf='/ms2/user/chgType?uid="+user.uid+"&suFlag=0'>cancel admin</a></td>"
+						userListHtml += "<td><a class='btn btn-success' href='/ms2/user/chgType?uid="+user.uid+"&suFlag=0'>cancel admin</a></td>"
 					}else{
-						userListHtml += "<td><a class='btn btn-success' herf='/ms2/user/chgType?uid="+user.uid+"&suFlag=1'>make admin</a></td>"
+						userListHtml += "<td><a class='btn btn-success' href='/ms2/user/chgType?uid="+user.uid+"&suFlag=1'>make admin</a></td>"
 						
 					}
 					userListHtml +="</tr>"

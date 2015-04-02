@@ -5,13 +5,15 @@
 
 	
 
-	<select id="getALlCategories" resultType="Category">
+	<select id="getAllCategories" resultType="Category">
 		SELECT 
-		c_id as cid,
-		u_id as uid,
-		c_name as cname,
-		c_time as ctime
-		FROM Category
+		c.c_id as cid,
+		c.u_id as uid,
+		c.c_name as cname,
+		c.c_time as ctime,
+		u.u_name as uname
+		FROM Category c,User u
+		WHERE c.u_id = u.u_id;
 	</select>
 	
 	<select id="getCategoriesByCid" parameterType="int" resultType="Category">
