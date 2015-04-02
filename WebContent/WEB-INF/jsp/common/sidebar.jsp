@@ -7,8 +7,10 @@
 		<ul class="nav nav-list">
 			<li class="nav-header"><i class="icon-user"></i>用户</li>
 			<li><a href="javascript:void(0)" id="allUsers">所有用户</a></li>
-			<li class="nav-header"><i class="icon-signal"></i>类别</li>
+			<li class="nav-header"><i class="icon-wrench"></i>类别</li>
 			<li><a href="javascript:void(0)" id="allCates">所有类别</a></li>
+			<li class="nav-header"><i class="icon-signal"></i>文章</li>
+			<li><a href="javascript:void(0)" id="allArticles">所有文章</a></li>
 		</ul>
 	</div>
 </div>
@@ -24,11 +26,12 @@
 			getAllAjax("/ms2/cate/all");
 		});
 		
-		
+		$("#allArticles").click(function(){
+			getAllAjax("/ms2/article/all");
+		});
 	});
 	
 	function getAllAjax(path){
-		
 		$.ajax({
 			type : "get",
 			url : path,

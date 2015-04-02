@@ -27,9 +27,38 @@
 			});	 
 		});
 		
-		
+		getAllCates();
+	
 	});
 	
+	function getAllCates(){
+		$.ajax({
+		    type : "get",
+			url : "/ms2/cate/all2",
+			dataType:"json",
+			success : function(data) {
+				$.each(data,function(i,c){
+					$("#cid"+c.cid).click(function(){
+						getArticlesByCid(c.cid);
+					});
+				});
+				
+			}
+			
+		});	
+	}
+	
+	function getArticlesByCid(cid){
+		$.ajax({
+			type : "get",
+			url : "/ms2/article/list",
+			data : {"cid":cid},
+			success : function(data) {
+				//alert(data);
+				$("#content").html(data);
+			}
+		});
+	}
 	
 </script>
 <div class="page-header">
@@ -72,17 +101,17 @@
 			<th>More</th>
 		</tr>
 	</thead>
-	<tbody
+	<tbody id="cateList">
 		<c:forEach items="${cates}" var="c">
 	<tr class='list-users'>
             <td>${c.cid}</td>
-            <td><a href="">${c.cname}</a></td>
+            <td><a href="javascript:void(0)" id="cid${c.cid}">${c.cname}</a></td>
             <td>${c.uid}</td>
             <td>${c.uname}</td>
             <td>${c.ctime}</td>
             <td><a class='btn btn-success' href=''></a></td>
         </tr>
-     </c:forEach>>
+     </c:forEach>
 	</tbody>
 </table>
 

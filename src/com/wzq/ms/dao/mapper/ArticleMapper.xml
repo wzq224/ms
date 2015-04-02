@@ -5,6 +5,19 @@
 
 	
 
+
+
+    <select id="getAll" resultType="Article" >
+		SELECT  
+		a_id as aid,
+		c_id as cid,
+		u_id as uid,
+		a_title as atitle,
+		a_content as acontent,
+		a_time as atime
+		FROM article
+	</select>
+	
 	<select id="getByAid" resultType="Article" parameterType="int" >
 		SELECT  
 		a_id as aid,

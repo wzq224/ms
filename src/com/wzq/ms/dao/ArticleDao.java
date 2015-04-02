@@ -6,11 +6,13 @@ import com.wzq.ms.dataobject.Article;
 
 public interface ArticleDao {
 
-	public Article getByAid(int aid);
+	public Article getByAid(Integer aid);
 	
-	public List<Article> getByCid(int cid);
+	public List<Article> getByCid(Integer cid);
 	
-	public List<Article> getByUid(int uid);
+	public List<Article> getByUid(Integer uid);
+	
+	public List<Article> getAll();
 	
 	public void addArticle(Article article);
 }

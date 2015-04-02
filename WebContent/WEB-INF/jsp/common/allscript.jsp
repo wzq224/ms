@@ -8,3 +8,4 @@
 <script src="../js/jquery.flot.resize.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
+<script src="../js/ckeditor/ckeditor.js"></script>

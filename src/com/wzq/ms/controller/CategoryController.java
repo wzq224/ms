@@ -29,6 +29,12 @@ public class CategoryController {
 	}
 	
 	
+	@RequestMapping("all2")
+	public @ResponseBody List<Category> getAll2(Model m){
+		
+		return cateDao.getAllCategories();
+	}
+	
 	@RequestMapping("add")
 	public @ResponseBody String add(String cname,Integer uid){
 		Category cate = new Category();

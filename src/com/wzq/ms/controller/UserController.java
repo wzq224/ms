@@ -46,8 +46,8 @@ public class UserController {
 		
 		User u = new User();
 		u.setUname(uname);
-		u.setPwd(MD5.md5Edcode(pwd));
-		
+		//u.setPwd(MD5.md5Edcode(pwd));
+		u.setPwd(pwd);
 		return userDao.checkLogin(u);
 		
 	}

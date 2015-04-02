@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,10 +20,20 @@ public class ArticleController {
 	ArticleDao articleDao;
 	
 	@RequestMapping("list")
-	public @ResponseBody List<Article> getByCid(Integer cid){
-		
-		List<Article> list = articleDao.getByCid(cid);
-		return list;
+	public String getByCid(Integer cid,Model m){
+		m.addAttribute("articles",articleDao.getByCid(cid));
+		return "articles";
+	}
+	
+	@RequestMapping("all")
+	public String getAll(Model m){
+		m.addAttribute("articles",articleDao.getAll());
+		return "articles";
+	}
+	
+	@RequestMapping("new")
+	public String newPage(){
+		return "newarticle";
 	}
 	
 	@RequestMapping("detial")
