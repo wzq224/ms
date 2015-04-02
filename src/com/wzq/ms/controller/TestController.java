@@ -25,7 +25,13 @@ public class TestController {
 		u.setUname("testUsername");
 		u.setPwd("testUsername");
 		System.out.println(userDao.selectUser(u));*/
-		return "test";
+		return "index";
+		
+	}
+	
+	@RequestMapping("t1")
+	public String t1(){
+		return "t1";
 		
 	}
 	

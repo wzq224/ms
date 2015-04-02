@@ -4,11 +4,9 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<title>Home</title>
+<title>NULL</title>
 </head>
-
 <jsp:include page="common/allscript.jsp" />
-
 <body>
 	<jsp:include page="common/header.jsp" />
 
@@ -18,15 +16,8 @@
 			<jsp:include page="common/sidebar.jsp" />
 
 			<div class="span9">
-				<div class="row-fluid">
-					<div class="page-header">
-						<h1>
-							网站统计 <small>网站统计 </small>
-						</h1>
-					</div>
-					<div id="placeholder" style="width: 80%; height: 300px;"></div>
-					<br />
-					<div id="visits" style="width: 80%; height: 300px;"></div>
+				<div class="row-fluid" id="content">
+				
 				</div>
 			</div>
 		</div>

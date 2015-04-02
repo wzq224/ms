@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,31 +28,19 @@ public class UserController {
 	public String index(){
 		return "login";
 	}
+
 	
-	@RequestMapping("page")
-	public String page(){
+
+	
+	@RequestMapping("all")
+	public String getAll(Model m){
+
+		List<User> users = userDao.getALlUsers();
+		m.addAttribute("users", users);
 		return "user";
 	}
 	
-	@RequestMapping("all")
-	public @ResponseBody List<User> getAllUsers(){
-		
-		List<User> users = userDao.getALlUsers();
-		
-		return users;
-	}
-	
-	
-	@RequestMapping("login")
-	public @ResponseBody String login(String uname,String pwd){
-		String test = "uname:"+uname+" pwd:"+pwd;
-		System.out.println(test);
-		
-		
-		
-		return test;
-	}
-	
+
 	@RequestMapping("checkLogin")
 	public @ResponseBody User checkLogin(String uname,String pwd){
 		
@@ -78,12 +67,14 @@ public class UserController {
 	}
 	
 	@RequestMapping("add")
-	public String add(User user){
-		user.setPwd(MD5.md5Edcode(user.getPwd()));
-		user.setUtime(new Date());
-		//System.out.print(user);
-		userDao.addUser(user);
-		return  "redirect:/user/page";
+	public @ResponseBody String add(String uname,String pwd,boolean suFlag){
+		User u = new User();
+		u.setPwd(pwd);
+		u.setSuFlag(suFlag);
+		u.setUname(uname);
+		u.setUtime(new Date());
+		userDao.addUser(u);
+		return  "";
 		
 	}
 }

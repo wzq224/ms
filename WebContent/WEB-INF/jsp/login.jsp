@@ -22,7 +22,7 @@ $(document).ready(function(){
 						
 						$.cookie("uid", data.uid,{expires:1,path:"/"});
 						$.cookie("uname", data.uname,{expires:1,path:"/"}); 
-						location.href = "/ms2/user/page";
+						location.href = "/ms2/i/i";
 					}else{
 						$('#errorFlag').show();
 						//alert("error");
@@ -66,14 +66,6 @@ $(document).ready(function(){
 								</div>
 							</div>
 
-							<!-- <div class="control-group">
-								<label class="control-label" for="name"></label>
-								<div class="controls">
-									<input type="submit" class="btn btn-success" id="Submit"
-										value=" Login " /> <input type="submit"
-										class="btn btn-success" id="Submit" value=" Cancle" />
-								</div>
-							</div> -->
 
 							<div class="control-group">
 								<div class="controls">

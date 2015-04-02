@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,26 +21,22 @@ public class CategoryController {
 	@Resource(name = "categoryDao")
 	CategoryDao cateDao;
 	
-	@RequestMapping("page")
-	public String page(){
-		return "cate";
-	}
-	
 	@RequestMapping("all")
-	public @ResponseBody List<Category> getAll(){
-		return cateDao.getAllCategories();
+	public String getAll(Model m){
+		m.addAttribute("cates", cateDao.getAllCategories());
+		
+		return "cate";
 	}
 	
 	
 	@RequestMapping("add")
-	public String add(String cname,Integer uid){
+	public @ResponseBody String add(String cname,Integer uid){
 		Category cate = new Category();
 		cate.setUid(uid);
 		cate.setCname(cname);
 		cate.setCtime(new Date());
 		cateDao.addCategory(cate);
-		
-		return  "redirect:/cate/page";
+		return  "";
 	}
 	
 	
