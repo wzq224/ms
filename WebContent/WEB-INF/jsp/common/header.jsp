@@ -39,12 +39,12 @@
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="my-profile.html">个人资料</a></li>
-					<li class="divider"></li>
+					<!-- <li><a href="my-profile.html">个人资料</a></li> -->
+					<!-- <li class="divider"></li> -->
 					<li><a id="logout" href="#">退出</a></li>
 				</ul>
 			</div>
-			<div class="nav-collapse">
+			<!-- <div class="nav-collapse">
 				<ul class="nav">
 					<li><a href="index.html">首页</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -63,7 +63,7 @@
 						</ul></li>
 					<li><a href="stats.html">统计</a></li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

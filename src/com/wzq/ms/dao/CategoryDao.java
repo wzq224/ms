@@ -8,7 +8,7 @@ public interface CategoryDao {
 
 	public List<Category> getAllCategories();
 	
-	public Category getCategoriesByCid(int cid);
+	public Category getCategoryByCid(int cid);
 	
 	public List<Category> getCategoriesByUid(int uid);
 	

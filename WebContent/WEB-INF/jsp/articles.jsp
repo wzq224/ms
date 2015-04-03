@@ -13,11 +13,43 @@ $(document).ready(function() {
 			}
 		});
 	});
+	getAllArticles();
+	
 });
+
+function getAllArticles(){
+	$.ajax({
+	    type : "get",
+		url : "/ms2/article/all2",
+		dataType:"json",
+		success : function(data) {
+			$.each(data,function(i,a){
+				$("#aid"+a.aid).click(function(){
+					getArticleByAid(a.aid);
+				});
+			});
+			
+		}
+		
+	});	
+}
+
+function getArticleByAid(aid){
+	$.ajax({
+		type : "get",
+		url : "/ms2/article/detial",
+		data : {"aid":aid},
+		success : function(data) {
+			//alert(data);
+			$("#content").html(data);
+		}
+	});
+}
+
 </script>
 <div class="page-header">
 	<h1>
-		文章 <small>All articles </small> <a href="javascript:void(0)"
+		文章 <small>类别：${cname}</small> <a href="javascript:void(0)"
 			class="btn btn-success" id="newBtn">New</a>
 	</h1>
 
@@ -39,7 +71,9 @@ $(document).ready(function() {
 		<c:forEach items="${articles}" var="a">
 			<tr class='list-users'>
 				<td>${a.aid}</td>
-				<td>${a.atitle}</td>
+				<td>${a.uname}</td>
+				<td>${a.cname}</td>
+				<td><a href="javascript:void(0)" id="aid${a.aid}">${a.atitle}</a></td>
 				<td>${a.acontent}</td>
 				<td>${a.atime}</td>
 				

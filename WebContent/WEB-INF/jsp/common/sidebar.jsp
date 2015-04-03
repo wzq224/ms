@@ -11,6 +11,7 @@
 			<li><a href="javascript:void(0)" id="allCates">所有类别</a></li>
 			<li class="nav-header"><i class="icon-signal"></i>文章</li>
 			<li><a href="javascript:void(0)" id="allArticles">所有文章</a></li>
+			<li><a href="javascript:void(0)" id="addArticle">添加文章</a></li>
 		</ul>
 	</div>
 </div>
@@ -19,19 +20,23 @@
 		
 		
 		$("#allUsers").click(function(){
-			getAllAjax("/ms2/user/all");
+			getPageAjax("/ms2/user/all");
 		});
 
 		$("#allCates").click(function(){
-			getAllAjax("/ms2/cate/all");
+			getPageAjax("/ms2/cate/all");
 		});
 		
 		$("#allArticles").click(function(){
-			getAllAjax("/ms2/article/all");
+			getPageAjax("/ms2/article/all");
+		});
+		
+		$("#addArticle").click(function(){
+			getPageAjax("/ms2/article/new");
 		});
 	});
 	
-	function getAllAjax(path){
+	function getPageAjax(path){
 		$.ajax({
 			type : "get",
 			url : path,

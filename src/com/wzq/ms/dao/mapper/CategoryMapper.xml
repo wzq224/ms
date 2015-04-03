@@ -16,7 +16,7 @@
 		WHERE c.u_id = u.u_id;
 	</select>
 	
-	<select id="getCategoriesByCid" parameterType="int" resultType="Category">
+	<select id="getCategoryByCid" parameterType="int" resultType="Category">
 		SELECT 
 		c_id as cid,
 		u_id as uid,

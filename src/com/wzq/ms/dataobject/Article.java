@@ -1,5 +1,7 @@
 package com.wzq.ms.dataobject;
 
+import java.util.Date;
+
 public class Article {
 
 	private int aid;
@@ -7,14 +9,19 @@ public class Article {
 	private int cid;
 	private String atitle;
 	private String acontent;
-	private String atime;
+	private Date atime;
+	
+	private String uname;
+	private String cname;
 	
 	public Article() {
 		super();
 	}
 
+	
+
 	public Article(int aid, int uid, int cid, String atitle, String acontent,
-			String atime) {
+			Date atime, String uname, String cname) {
 		super();
 		this.aid = aid;
 		this.uid = uid;
@@ -22,7 +29,35 @@ public class Article {
 		this.atitle = atitle;
 		this.acontent = acontent;
 		this.atime = atime;
+		this.uname = uname;
+		this.cname = cname;
 	}
+
+
+
+	public String getUname() {
+		return uname;
+	}
+
+
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+
+
+	public String getCname() {
+		return cname;
+	}
+
+
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+
 
 	public int getAid() {
 		return aid;
@@ -64,11 +99,11 @@ public class Article {
 		this.acontent = acontent;
 	}
 
-	public String getAtime() {
+	public Date getAtime() {
 		return atime;
 	}
 
-	public void setAtime(String atime) {
+	public void setAtime(Date atime) {
 		this.atime = atime;
 	}
 
@@ -76,7 +111,7 @@ public class Article {
 	public String toString() {
 		return "Article [aid=" + aid + ", uid=" + uid + ", cid=" + cid
 				+ ", atitle=" + atitle + ", acontent=" + acontent + ", atime="
-				+ atime + "]";
+				+ atime + ", uname=" + uname + ", cname=" + cname + "]";
 	}
 	
 	

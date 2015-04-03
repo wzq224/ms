@@ -3,62 +3,75 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wzq.ms.dao.ArticleDao">
 
-	
-
-
 
     <select id="getAll" resultType="Article" >
 		SELECT  
-		a_id as aid,
-		c_id as cid,
-		u_id as uid,
-		a_title as atitle,
-		a_content as acontent,
-		a_time as atime
-		FROM article
+		a.a_id as aid,
+		a.c_id as cid,
+		a.u_id as uid,
+		a.a_title as atitle,
+		<!-- a.a_content as acontent, -->
+		a.a_time as atime,
+		u.u_name as uname,
+		c.c_name as cname
+		FROM article a,user u,category c
+		WHERE a.c_id=c.c_id
+		AND a.u_id = u.u_id
 	</select>
 	
 	<select id="getByAid" resultType="Article" parameterType="int" >
 		SELECT  
-		a_id as aid,
-		c_id as cid,
-		u_id as uid,
-		a_title as atitle,
-		a_content as acontent,
-		a_time as atime
-		FROM article
-		WHERE a_id = #{aid}
+		a.a_id as aid,
+		a.c_id as cid,
+		a.u_id as uid,
+		a.a_title as atitle,
+		a.a_content as acontent,
+		a.a_time as atime,
+		u.u_name as uname,
+		c.c_name as cname
+		FROM article a,user u,category c
+		WHERE a.c_id=c.c_id
+		AND a.u_id = u.u_id
+		AND a.a_id = #{aid}
 	</select>
 	
 	
 	<select id="getByCid" resultType="Article" parameterType="int" >
 		SELECT  
-		a_id as aid,
-		c_id as cid,
-		u_id as uid,
-		a_title as atitle,
-		a_content as acontent,
-		a_time as atime
-		FROM article
-		WHERE c_id = #{cid}
+		a.a_id as aid,
+		a.c_id as cid,
+		a.u_id as uid,
+		a.a_title as atitle,
+		a.a_content as acontent,
+		a.a_time as atime,
+		u.u_name as uname,
+		c.c_name as cname
+		FROM article a,user u,category c
+		WHERE a.c_id=c.c_id
+		AND a.u_id = u.u_id
+		AND a.c_id = #{cid}
 	</select>
 	
 	<select id="getByUid" resultType="Article" parameterType="int" >
 		SELECT  
-		a_id as aid,
-		c_id as cid,
-		u_id as uid,
-		a_title as atitle,
-		a_content as acontent,
-		a_time as atime
-		FROM article
-		WHERE u_id = #{uid}
+		a.a_id as aid,
+		a.c_id as cid,
+		a.u_id as uid,
+		a.a_title as atitle,
+		a.a_content as acontent,
+		a.a_time as atime,
+		u.u_name as uname,
+		c.c_name as cname
+		FROM article a,user u,category c
+		WHERE a.c_id=c.c_id
+		AND a.u_id = u.u_id
+		AND a.u_id = #{uid}
 	</select>
 	
 	<insert id="addArticle" parameterType="Article" flushCache="true" >
 		INSERT
-		INTO Article (u_id,c_name,c_time)
-		VALUES(#{uid},#{cname},#{ctime})
+		INTO article (a_id,c_id,u_id,a_title,a_content,a_time)
+		VALUES(#{aid},#{cid},#{uid},#{atitle},#{acontent},#{atime})
 	</insert>
 	
 	<update id="chgName" parameterType="Article">
