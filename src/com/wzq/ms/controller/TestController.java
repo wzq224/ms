@@ -84,11 +84,11 @@ public class TestController {
 		
 		Cookie[] cookies = request.getCookies();
 	    for(Cookie c:cookies){
-	    	
-	    	if("loginName".equals(c.getName()) && c.getMaxAge()>0){
+	    	//System.out.println(c.getName()+":"+c.getValue()+" login ok");
+	    	if("uid".equals(c.getName())){
 	    		System.out.println(c.getName()+":"+c.getValue()+" login ok");
 	    	}
-	    	System.out.println(c.getMaxAge());
+	    	//System.out.println(c.getMaxAge());
 	    	//c.setSecure(flag);
 	    }
 		return "get";

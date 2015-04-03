@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wzq.ms.dao.CategoryDao;
 import com.wzq.ms.dataobject.Category;
+import com.wzq.ms.service.AuthorityService;
 
 
 @Controller
@@ -21,10 +22,16 @@ public class CategoryController {
 	@Resource(name = "categoryDao")
 	CategoryDao cateDao;
 	
+	@Resource(name = "authorityService")
+	AuthorityService authorityService;
+	
 	@RequestMapping("all")
-	public String getAll(Model m){
-		m.addAttribute("cates", cateDao.getAllCategories());
-		
+	public String getAll(Integer uid,Model m){
+		if(authorityService.isAdmin(uid)){
+			m.addAttribute("cates", cateDao.getAllCategories());
+		}else{
+			m.addAttribute("cates", cateDao.getCategoriesByAu(uid));
+		}
 		return "cate";
 	}
 	

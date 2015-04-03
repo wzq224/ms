@@ -21,8 +21,7 @@ public class ArticleController {
 	@Resource(name="articleDao")
 	ArticleDao articleDao;
 	
-
-	@Resource(name = "categoryDao")
+	@Resource(name="categoryDao")
 	CategoryDao cateDao;
 	
 	@RequestMapping("list")

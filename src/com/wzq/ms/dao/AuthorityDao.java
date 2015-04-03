@@ -9,4 +9,6 @@ public interface AuthorityDao {
 	public void addAuVAlue(Authority authority);
 	
 	public void chgAuVAlue(Authority authority);
+
+	public boolean checkAuthority(Integer uid, Integer cid);
 }

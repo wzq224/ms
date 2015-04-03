@@ -54,6 +54,14 @@
 		WHERE u_id=#{uid}
 	</update>
 	
+	
+	<select id="checkAdmin" parameterType="int" resultType="boolean">
+		SELECT 
+		su_flag
+		FROM user
+		WHERE u_id=#{uid}
+	</select>
+	
 	<delete id="deleteUser" parameterType="int">
 		DELETE FROM user 
 		WHERE u_id=#{uid}

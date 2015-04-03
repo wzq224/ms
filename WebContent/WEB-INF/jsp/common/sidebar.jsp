@@ -24,7 +24,8 @@
 		});
 
 		$("#allCates").click(function(){
-			getPageAjax("/ms2/cate/all");
+			
+			getPageAjax("/ms2/cate/all?uid="+$.cookie("uid"));
 		});
 		
 		$("#allArticles").click(function(){

@@ -10,7 +10,14 @@ public class Authority {
 	public Authority() {
 		super();
 	}
-	public Authority(int auId, int aid, int uid, int auValue) {
+	
+	public Authority(int cid, int uid) {
+		super();
+		this.cid = cid;
+		this.uid = uid;
+	}
+	
+	public Authority(int auId, int cid, int uid, int auValue) {
 		super();
 		this.auId = auId;
 		this.cid = cid;

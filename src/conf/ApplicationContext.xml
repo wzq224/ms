@@ -67,4 +67,9 @@
 		<property name="mapperInterface" value="com.wzq.ms.dao.AuthorityDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="authorityService" class="com.wzq.ms.service.AuthorityService">
+		<property name="authorityDao" ref="authorityDao"/>
+		<property name="userDao" ref="userDao"/>
+	</bean>
 </beans>

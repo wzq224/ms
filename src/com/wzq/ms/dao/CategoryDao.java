@@ -15,4 +15,6 @@ public interface CategoryDao {
 	public void addCategory(Category category);
 
 	public void chgName(Category cate);
+
+	public List<Category> getCategoriesByAu(Integer uid);
 }
