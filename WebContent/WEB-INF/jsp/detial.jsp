@@ -8,10 +8,9 @@
 </script>
 <div class="page-header">
 	<h1>
-		${article.atitle}
+		${article.atitle}<small>${article.cname}</small>
 	</h1>
-	<h2>${article.uname}</h2>
-		<h2>${article.cname}</h2>
+	<h3>AUTHOR:${article.uname}</h3>
 		
 	${article.acontent}
 </div>

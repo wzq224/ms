@@ -9,3 +9,11 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script src="../js/ckeditor/ckeditor.js"></script>
+<script>
+function checkLogin(){
+	if(!$.cookie("uid")){
+		location.href = "/ms2/user/";
+	}
+}
+
+</script>

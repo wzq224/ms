@@ -18,8 +18,7 @@
 
 			<div class="span9">
 				<div class="row-fluid" id="content">
-				<textarea rows="30" cols="30" name="editor01">请输入.</textarea>
-				<script type="text/javascript">CKEDITOR.replace('editor01');</script>
+				<jsp:include page="userau.jsp" />
 				</div>
 			</div>
 		</div>
@@ -28,11 +27,5 @@
 	</div>
 
 </body>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#allUsers").click();
-	});
-</script>
 </html>
 

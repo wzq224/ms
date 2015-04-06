@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
+
 	$(document).ready(function() {
 		$('#logout').click(function() {
 			$.cookie("uid", null, {
@@ -16,8 +17,10 @@
 			location.href = "/ms2/user/";
 		});
 		var uname = $.cookie("uname");
-		$('#uname').html(uname);	
-
+		$('#uname').html(uname);
+		
+		checkLogin();
+		
 	})
 </script>
 <div class="navbar navbar-fixed-top">

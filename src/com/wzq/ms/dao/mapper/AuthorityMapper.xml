@@ -5,6 +5,21 @@
 
 	
 
+
+	<select id="getAllAu" resultType="Authority" parameterType="int" >
+		SELECT  
+		au.au_value as auValue,
+		au.u_id as uid,
+		u.u_name as uname,
+		au.c_id as cid,
+		c.c_name as cname
+		FROM authority au,category c, user u
+		WHERE au.u_id = #{uid}
+		AND au.u_id = u.u_id
+		AND au.c_id = c.c_id
+		AND au_value > 0;
+	</select>
+	
 	<select id="getAuValue" resultType="int" parameterType="Authority" >
 		SELECT  
 		au_value as auValue

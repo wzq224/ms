@@ -7,6 +7,9 @@ public class Authority {
 	private int uid;
 	private int auValue;
 	
+	private String cname;
+	private String uname;
+	
 	public Authority() {
 		super();
 	}
@@ -17,9 +20,8 @@ public class Authority {
 		this.uid = uid;
 	}
 	
-	public Authority(int auId, int cid, int uid, int auValue) {
+	public Authority(int cid, int uid, int auValue) {
 		super();
-		this.auId = auId;
 		this.cid = cid;
 		this.uid = uid;
 		this.auValue = auValue;
@@ -48,10 +50,29 @@ public class Authority {
 	public void setAuValue(int auValue) {
 		this.auValue = auValue;
 	}
+
 	@Override
 	public String toString() {
 		return "Authority [auId=" + auId + ", cid=" + cid + ", uid=" + uid
-				+ ", auValue=" + auValue + "]";
+				+ ", auValue=" + auValue + ", cname=" + cname + ", uname="
+				+ uname + "]";
 	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	
 	
 }

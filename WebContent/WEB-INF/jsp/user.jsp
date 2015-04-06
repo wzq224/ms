@@ -33,7 +33,6 @@
 	<h1>
 		用户 <small>All users </small> <a href="javascript:void(0)"
 			class="btn btn-success" id="newUserBtn">New User</a>
-
 	</h1>
 
 	<form id="newUserForm" class="form-horizontal" action=""
@@ -102,8 +101,17 @@
 				<td>${u.uname}</td>
 				<td>${u.suFlag}</td>
 				<td>${u.utime}</td>
-				<td><a class='btn btn-success'
-					href='/ms2/user/chgType?uid=${u.uid}&suFlag=1'>make admin</a></td>
+				<td>
+				<c:if test="${!u.suFlag}">
+				<a class='btn btn-success'
+					href='/ms2/user/chgType?uid=${u.uid}&suFlag=1'>make admin</a>
+				
+				</c:if>
+				<c:if test="${u.suFlag}">
+				<a class='btn btn-fail'
+					href='/ms2/user/chgType?uid=${u.uid}&suFlag=0'>unset admin</a>
+				</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>

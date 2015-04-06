@@ -5,6 +5,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		
+		
 		$("#newForm").hide();
 		$("#newBtn").click(function() {
 			$("#newForm").slideToggle();

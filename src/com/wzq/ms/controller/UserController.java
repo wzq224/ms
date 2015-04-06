@@ -13,16 +13,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wzq.ms.dao.AuthorityDao;
+import com.wzq.ms.dao.CategoryDao;
 import com.wzq.ms.dao.UserDao;
+import com.wzq.ms.dataobject.Authority;
+import com.wzq.ms.dataobject.Category;
 import com.wzq.ms.dataobject.User;
-import com.wzq.ms.tools.MD5;
 
 @RequestMapping("/user/")
 @Controller
 public class UserController {
 
-	@Resource(name="userDao")
+	@Resource(name = "userDao")
 	private UserDao userDao;
+	
+	@Resource(name = "authorityDao")
+	private AuthorityDao authorityDao;
+	
+	@Resource(name="categoryDao")
+	private CategoryDao categoryDao;
 	
 	@RequestMapping("")
 	public String index(){
@@ -77,4 +86,43 @@ public class UserController {
 		return  "";
 		
 	}
+	
+	@RequestMapping("chgType")
+	public String chgType (Integer uid,boolean suFlag){
+		User u = new User();
+		u.setUid(uid);
+		u.setSuFlag(suFlag);
+		userDao.chgType(u);
+		return "redirect:/i/i";
+	}
+	
+	@RequestMapping("allau")
+	public String getAuDetial(Integer uid,HttpServletRequest request){
+		List<Authority> auList = authorityDao.getAllAu(uid);
+		List<Category> allList = categoryDao.getAllCategories();
+		for(Authority au:auList){
+			for(Category c:allList){
+				if(au.getCid() == c.getCid()){
+					allList.remove(c);
+					break;
+				}
+			}
+		}
+		request.setAttribute("uauList", allList);
+		request.setAttribute("auList", auList);
+		
+		
+		return "auindex";
+	}
+	
+	@RequestMapping("chgAuList")
+	public @ResponseBody String chgAuList(String param,Integer flag,Integer uid){
+		String[] cidArr = param.split(",");
+		for(String cid:cidArr){
+			authorityDao.chgAuVAlue(new Authority(Integer.valueOf(cid),uid,flag));
+		}
+		System.out.print(param);
+		return param;
+	}
+	
 }
