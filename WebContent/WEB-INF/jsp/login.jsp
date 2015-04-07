@@ -11,7 +11,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#errorFlag').hide();
-	  $("#login").click(function(){
+	 $("#login").click(function(){
 			$.ajax({
 			    type : "post",
 				url : "/ms2/user/checkLogin",
@@ -22,6 +22,8 @@ $(document).ready(function(){
 						
 						$.cookie("uid", data.uid,{expires:1,path:"/"});
 						$.cookie("uname", data.uname,{expires:1,path:"/"}); 
+						$.cookie("suflag", data.suFlag,{expires:1,path:"/"}); 
+						
 						location.href = "/ms2/i/i";
 					}else{
 						$('#errorFlag').show();

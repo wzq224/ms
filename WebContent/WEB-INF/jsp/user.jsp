@@ -98,7 +98,7 @@
 		<c:forEach items="${users}" var="u">
 			<tr class='list-users'>
 				<td>${u.uid}</td>
-				<td>${u.uname}</td>
+				<td><a href="/ms2/user/allau?uid=${u.uid}">${u.uname}</a></td>
 				<td>${u.suFlag}</td>
 				<td>${u.utime}</td>
 				<td>

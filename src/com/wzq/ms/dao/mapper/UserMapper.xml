@@ -18,7 +18,8 @@
 	<select id="checkLogin" parameterType="User" resultType="User">
 		SELECT 
 		u_name as uname,
-		u_id as uid
+		u_id as uid,
+		su_flag as suFlag
 		FROM user
 		WHERE u_name=#{uname}
 		AND pwd=#{pwd}

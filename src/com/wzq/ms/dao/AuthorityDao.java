@@ -6,7 +6,7 @@ import com.wzq.ms.dataobject.Authority;
 
 public interface AuthorityDao {
 
-	public int getAuValue(Authority authority);
+	public Integer getAuValue(Authority authority);
 	
 	public void addAuVAlue(Authority authority);
 	

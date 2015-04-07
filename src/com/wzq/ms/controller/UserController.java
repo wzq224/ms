@@ -110,19 +110,26 @@ public class UserController {
 		}
 		request.setAttribute("uauList", allList);
 		request.setAttribute("auList", auList);
-		
+		request.setAttribute("uid", uid);
 		
 		return "auindex";
 	}
 	
 	@RequestMapping("chgAuList")
-	public @ResponseBody String chgAuList(String param,Integer flag,Integer uid){
+	public String chgAuList(String param,Integer flag,Integer uid){
 		String[] cidArr = param.split(",");
+		
 		for(String cid:cidArr){
-			authorityDao.chgAuVAlue(new Authority(Integer.valueOf(cid),uid,flag));
+			Authority au = new Authority(Integer.valueOf(cid),uid,flag);
+			if(flag == 1 && authorityDao.getAuValue(au) == null){
+				authorityDao.addAuVAlue(au);
+			}else{
+				authorityDao.chgAuVAlue(au);
+			}
+			
 		}
-		System.out.print(param);
-		return param;
+		
+		return "redirect:/user/allau?uid="+uid;
 	}
 	
 }

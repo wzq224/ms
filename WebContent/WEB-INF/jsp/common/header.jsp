@@ -14,6 +14,10 @@
 				expires : 0,
 				path : "/"
 			});
+			$.cookie("suflag", null, {
+				expires : 0,
+				path : "/"
+			});
 			location.href = "/ms2/user/";
 		});
 		var uname = $.cookie("uname");

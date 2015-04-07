@@ -20,7 +20,12 @@
 		
 		
 		$("#allUsers").click(function(){
-			getPageAjax("/ms2/user/all");
+			if($.cookie("suflag") == 'true'){
+				getPageAjax("/ms2/user/all");
+			}else{
+				alert("You are not an admin");
+			}
+			
 		});
 
 		$("#allCates").click(function(){

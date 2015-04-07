@@ -14,6 +14,7 @@ $(document).ready(function() {
 			dataType:"json",
 			data:$('#newArticleForm').serialize(),
 			success : function(data) {
+				alert("allA");
 				$("#allArticles").click()
 			}
 			
